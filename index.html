@@ -33,10 +33,14 @@
        of every panel is preloaded so the text paints in it from the start. -->
   <link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link href="https://unpkg.com/maplibre-gl@3.4.0/dist/maplibre-gl.css" rel="stylesheet">
-  <!-- defer: parsing and first paint do not wait on the ~800 KB library; app.js
-       (also deferred) still runs after it. -->
-  <script src="https://unpkg.com/maplibre-gl@3.4.0/dist/maplibre-gl.js" defer></script>
+  <link href="https://unpkg.com/maplibre-gl@6.14.0/dist/maplibre-gl.css" rel="stylesheet">
+  <!-- The library ships as an ES module only. A module script is deferred, so
+       parsing and first paint do not wait on it, and it runs in order with
+       app.js (deferred too), which finds it as the global it expects. -->
+  <script type="module">
+    import * as maplibregl from "https://unpkg.com/maplibre-gl@6.14.0/dist/maplibre-gl.mjs";
+    window.maplibregl = maplibregl;
+  </script>
   <link rel="preload" href="data/meta.json" as="fetch" crossorigin="anonymous">
   <!-- A first visit asks ipwho.is for the state (app.js, guessUf): open the
        connection while the page loads. -->
@@ -207,6 +211,6 @@
 
   <div id="error" class="error" role="alert" hidden></div>
 
-  <script src="app.js?v=72" defer></script>
+  <script src="app.js?v=73" defer></script>
 </body>
 </html>

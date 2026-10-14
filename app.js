@@ -547,8 +547,9 @@
         map.triggerRepaint();
       },
 
-      render: function (gl, matrix) {
+      render: function (gl, opts) {
         if (!data) return;
+        var matrix = opts.defaultProjectionData.mainMatrix;
         var dpr = map.getPixelRatio ? map.getPixelRatio() : window.devicePixelRatio || 1;
         var R = params.radius, extent = R + 0.5;
         var light = params.alpha * params.gain;

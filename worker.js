@@ -122,7 +122,7 @@ function loadFiltro(id, url) {
 }
 
 function gunzip(buf) {
-  if (typeof fflate === "undefined") importScripts("https://unpkg.com/fflate@0.8.2/umd/index.js");
+  if (typeof fflate === "undefined") importScripts("https://unpkg.com/fflate@0.8.3/umd/index.js");
   var out = fflate.gunzipSync(new Uint8Array(buf));
   return out.byteOffset === 0 && out.byteLength === out.buffer.byteLength
     ? out.buffer
