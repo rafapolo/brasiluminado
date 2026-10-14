@@ -177,6 +177,7 @@ button {
      place: app.js (fitPlace) shrinks the long names to fit. */
   line-height: calc(var(--place) * 1.1);
   white-space: nowrap;
+  text-align: center;
   /* Clipped sideways only, so the glow is free above and below; the
      padding, taken back by the margin, is room for it at the sides. */
   overflow-x: clip;
